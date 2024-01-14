@@ -1,23 +1,15 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import { Score } from './components/Score';
+import { GameIntro } from './components/GameIntro';
 
 function App() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const handlePlay = e => setIsPlaying(current => !current)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Score />
+      <GameIntro isPlaying={isPlaying} handlePlay={handlePlay} />
     </div>
   );
 }
